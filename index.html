@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashish's Personal Trading Agent — proving it, daily</title>
+<style>
+:root{--bg:#0d0d0d;--card:#1a1a19;--ink:#fff;--ink2:#c3c2b7;--mut:#898781;
+--acc:#3987e5;--good:#0ca30c;--border:rgba(255,255,255,.1)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:48px 24px;display:grid;gap:28px}
+h1{font-size:30px;line-height:1.2}
+h2{font-size:17px;color:var(--ink2);margin-bottom:10px}
+.tag{color:var(--acc);font-weight:600;letter-spacing:.06em;font-size:13px;
+text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--border);
+border-radius:12px;padding:22px}
+.big{font-size:20px;color:var(--ink2)}
+.big b{color:var(--ink)}
+ul{padding-left:20px;color:var(--ink2)}
+li{margin:8px 0}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:13px;
+color:var(--good);word-break:break-all}
+.foot{font-size:13px;color:var(--mut)}
+.pill{display:inline-block;border:1px solid var(--border);border-radius:99px;
+padding:3px 12px;font-size:13px;color:var(--ink2);margin:3px 4px 3px 0}
+</style>
+</head>
+<body><div class="wrap">
+
+<div>
+<div class="tag">Under construction · building in public, cryptographically</div>
+<h1>An autonomous AI trading system that will prove —<br>not claim — every result.</h1>
+</div>
+
+<div class="card">
+<p class="big">Trading products all say the same thing: <i>"trust our returns."</i>
+We're building the opposite: a system whose entire decision history is
+<b>sealed with public cryptographic proofs, every single day</b> — so when
+the books open, nothing can have been edited, cherry-picked, or invented.
+Predictions provably made <b>before</b> outcomes. Verifiable by anyone.</p>
+</div>
+
+<div class="card">
+<h2>What already exists (and is provably running)</h2>
+<ul>
+<li>A committee of AI analysts that debates every decision — and an
+<b>immutable risk constitution</b> no AI can override</li>
+<li>Analysts <b>earn</b> influence through graded accuracy; new ones train
+in shadow with zero power until evidence promotes them</li>
+<li>Every <i>rejected</i> trade is tracked too — the system's judgment is
+audited, not just its wins</li>
+<li>A nightly adversarial AI auditor that hunts for the system's own flaws</li>
+<li><b>Daily public proof:</b> a SHA-256 fingerprint of the day's full
+records, <a href="proofs.jsonl">published here every close</a></li>
+<li>The evaluation's pass/fail rules — <a href="GATE_A_CRITERIA.md">
+pre-registered and sealed</a> <i>before</i> the results exist</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>What happens next</h2>
+<p class="big">A 30-trading-day sealed evaluation is running now.
+<b>In late August 2026, the books open</b> — every decision, every trade,
+every loss, judged against pre-registered criteria and honest baselines,
+verifiable against the fingerprints already published below your feet.</p>
+<div style="margin-top:12px">
+<span class="pill">📓 every decision logged</span>
+<span class="pill">🔏 sealed daily since July 20</span>
+<span class="pill">⚖️ criteria fixed in advance</span>
+<span class="pill">📉 losses published too</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Verify, don't trust</h2>
+<p class="big mono">First public seal — 2026-07-20:<br>
+decisions: 2749a68c352b38de…<br>
+criteria commit: 7686fbb487a1cdd4…</p>
+<p style="margin-top:10px;color:var(--ink2)">Each day adds a line to
+<a href="proofs.jsonl">proofs.jsonl</a>. At disclosure, hash the revealed
+records and compare. Math doesn't take anyone's word for it.</p>
+</div>
+
+<p class="foot">A private research project. No investment advice. No
+performance claims — that's the point: claims are free, proofs are not.
+Strategies and code remain private. · © 2026 Ashish Arya</p>
+
+</div></body></html>
