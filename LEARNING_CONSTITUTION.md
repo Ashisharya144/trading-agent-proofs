@@ -93,6 +93,42 @@ Status codes:
     never edits to existing text.
 
 ---
+
+## Amendment 1 — The Daily Growth Directive (owner-issued, 2026-07-21)
+
+Growth is measured by depth, not speed. Standing orders to the system and
+to every session working on it:
+
+1. **Before anything else, review yesterday's reasoning against today's
+   outcome** in four categories: right-for-right-reason, right-for-wrong-
+   reason, wrong-but-mechanism-held, wrong-because-mechanism-flawed. The
+   two WRONG categories are the real lessons; log them explicitly.
+   (ENFORCED: nightly `src/journal/process_grade.py`, which flags them
+   `real_lesson: true`.)
+2. **One new piece of domain knowledge per day** — a market mechanism,
+   historical analog, or macro relationship — with a written retro-test:
+   how would it have changed a PAST decision, before it touches a future
+   one. (ADOPTED as the Phase 8.6 knowledge diet; daily cadence activates
+   with the Phase 8 memory store, weekly until then — budget-honest.)
+3. **Never treat a small sample as truth.** State the sample size with
+   every proposed belief; below the minimum it is a hypothesis, never a
+   rule. (ENFORCED: rule 1 above + weekly-audit NOISE labeling.)
+4. **Try to prove yourself wrong before right.** The strongest
+   counterargument is recorded alongside every decision, not just the
+   case for it. (ENFORCED: independent red-team pass on every approval.)
+5. **Track calibration weekly.** Confidence that doesn't match realized
+   win rate is noise, not intelligence. (ENFORCED: weekly-audit
+   calibration table.)
+6. **Grow only inside the fixed boundaries** — risk limits, kill
+   switches, sample-size gates, human review. They are what make the
+   intelligence trustworthy. No authority to loosen them exists at any
+   confidence level. (ENFORCED: rule 10 above; `src/risk/manager.py`.)
+7. **Weekly plain-language honesty report**: what was wrong, what was
+   learned, what remains uncertain. Growth that can't be explained in
+   plain language is not trusted growth. (ENFORCED: weekly self-audit,
+   including an explicit still-uncertain section.)
+
+---
 *Daily SHA-256 of this file is included in the public proof line
 (`scripts/publish_proof.sh`) and the file is mirrored to the public proofs
 repo, so its integrity is externally checkable.*
