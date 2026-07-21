@@ -3,225 +3,211 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ASHISH.TRADING.AGENT — sealed daily, books open August 2026</title>
+<title>Ashish's Trading Agent — an AI that proves every result</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b1118;--panel:#0f1722;--panel2:#131d2b;--line:#1d2a3a;
-  --ink:#dbe7f0;--dim:#7d8fa3;--mut:#54657a;
-  --grn:#2ee08c;--grn-dim:#1a7a52;--amb:#ffb454;--red:#ff6b6b;--blu:#58a6ff;
-  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --bg:#0a0b0e;--surface:#101218;--surface2:#14171f;
+  --line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);
+  --ink:#f2f4f8;--body:#a8b0bc;--mut:#6b7280;
+  --green:#34d399;--green-soft:rgba(52,211,153,.12);
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--mono)}
-a{color:var(--blu);text-decoration:none}
-a:hover{text-decoration:underline}
-::selection{background:var(--grn-dim);color:#fff}
+body{background:var(--bg);color:var(--ink);
+font:16px/1.65 "Inter",system-ui,-apple-system,sans-serif;
+-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1020px;margin:0 auto;padding:0 28px}
 
-/* ── top ticker ─────────────────────────────── */
-.ticker{position:sticky;top:0;z-index:9;background:#080d13;border-bottom:1px solid var(--line);
-overflow:hidden;white-space:nowrap;font-size:12.5px;padding:7px 0;color:var(--dim)}
-.ticker span{margin:0 26px}
-.ticker b{color:var(--grn);font-weight:600}
-.tickwrap{display:inline-block;animation:tick 34s linear infinite}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.tickwrap{animation:none}}
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+.logo{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.logo span{color:var(--green)}
+.navlink{font-size:14px;color:var(--body);text-decoration:none;
+border:1px solid var(--line2);padding:9px 18px;border-radius:99px;transition:.2s}
+.navlink:hover{color:var(--ink);border-color:var(--green)}
 
-.wrap{max-width:880px;margin:0 auto;padding:52px 20px;display:grid;gap:56px}
+/* hero */
+.hero{position:relative;padding:96px 0 72px;text-align:center}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto;height:130%;
+background:radial-gradient(600px 340px at 50% 10%,rgba(52,211,153,.09),transparent 70%);
+pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;
+color:var(--green);background:var(--green-soft);border:1px solid rgba(52,211,153,.25);
+padding:7px 16px;border-radius:99px;margin-bottom:28px}
+.badge .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);
+box-shadow:0 0 0 0 rgba(52,211,153,.5);animation:pulse 2.2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}}
+@media(prefers-reduced-motion:reduce){.badge .pulse{animation:none}}
+h1{font-size:clamp(38px,6.4vw,64px);line-height:1.06;font-weight:800;
+letter-spacing:-.03em;max-width:17ch;margin:0 auto}
+h1 em{font-style:normal;color:var(--green)}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--body);max-width:52ch;
+margin:26px auto 0;line-height:1.6}
+.lede strong{color:var(--ink);font-weight:600}
 
-/* ── hero ───────────────────────────────────── */
-.kicker{color:var(--grn);font-size:12px;letter-spacing:.22em;margin-bottom:14px}
-h1{font-size:clamp(26px,5vw,40px);line-height:1.15;font-weight:700}
-h1 .g{color:var(--grn)}
-.sub{color:var(--dim);margin-top:14px;max-width:60ch;font-size:15.5px}
-.sub b{color:var(--ink)}
+/* stats strip */
+.stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:44px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+padding:16px 26px;min-width:150px}
+.stat b{display:block;font-size:22px;font-weight:700;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--mut)}
+.stat .g{color:var(--green)}
 
-/* ── terminal window ────────────────────────── */
-.term{background:var(--panel);border:1px solid var(--line);border-radius:10px;
-box-shadow:0 0 44px rgba(46,224,140,.05),0 18px 50px rgba(0,0,0,.5);overflow:hidden}
-.tbar{display:flex;align-items:center;gap:7px;background:#0c1420;
-border-bottom:1px solid var(--line);padding:10px 14px;font-size:12px;color:var(--mut)}
-.dot{width:11px;height:11px;border-radius:50%}
-.d1{background:#ff5f57}.d2{background:#febc2e}.d3{background:#28c840}
-.tbar .title{margin-left:8px}
-.tbody{padding:18px 18px 22px;font-size:13.5px;line-height:1.85;min-height:430px}
-.tl{opacity:0;transform:translateY(2px);transition:opacity .18s ease-out,transform .18s ease-out;
-white-space:pre-wrap;word-break:break-word}
-.tl.show{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.tl{opacity:1;transform:none;transition:none}}
-.c-dim{color:var(--dim)}.c-grn{color:var(--grn)}.c-amb{color:var(--amb)}
-.c-red{color:var(--red)}.c-blu{color:var(--blu)}.c-mut{color:var(--mut)}
-.redact{background:var(--line);color:var(--line);border-radius:3px;padding:0 2px}
-.cursor{display:inline-block;width:8px;height:15px;background:var(--grn);
-vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.cursor{animation:none}}
+/* sections */
+section{padding:72px 0}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;color:var(--green);
+text-transform:uppercase;margin-bottom:14px}
+h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;letter-spacing:-.02em;
+line-height:1.15;max-width:24ch}
+.sect-sub{color:var(--body);max-width:58ch;margin-top:14px;font-size:16.5px}
 
-/* ── sections ───────────────────────────────── */
-h2{font-size:13px;color:var(--grn);letter-spacing:.2em;margin-bottom:18px}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px}
-.progress{font-size:14px;color:var(--dim);margin-top:10px}
-.progress .bar{color:var(--grn);letter-spacing:1px}
+/* how it works cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:16px;margin-top:44px}
+.card{background:linear-gradient(180deg,var(--surface2),var(--surface));
+border:1px solid var(--line);border-radius:18px;padding:30px 28px;transition:.25s}
+.card:hover{border-color:var(--line2);transform:translateY(-2px)}
+.card .num{font-size:13px;font-weight:600;color:var(--mut);letter-spacing:.1em}
+.card .ic{width:44px;height:44px;border-radius:12px;background:var(--green-soft);
+display:flex;align-items:center;justify-content:center;margin:18px 0 18px}
+.card .ic svg{width:22px;height:22px;stroke:var(--green)}
+.card h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+.card p{color:var(--body);font-size:15px;line-height:1.65}
+.card p strong{color:var(--ink);font-weight:600}
 
-/* committee grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.agent{background:var(--panel2);border:1px solid var(--line);border-radius:8px;
-padding:15px 16px;font-size:13px}
-.agent .nm{color:var(--ink);font-weight:700;font-size:14px}
-.agent .role{color:var(--dim);margin:5px 0 10px;min-height:38px}
-.st{font-size:11.5px;letter-spacing:.12em;padding:2px 9px;border-radius:99px;border:1px solid}
-.st-v{color:var(--grn);border-color:var(--grn-dim)}
-.st-t{color:var(--amb);border-color:#7a5a26}
-.st-n{color:var(--red);border-color:#7a3a3a}
-.st-s{color:var(--blu);border-color:#2a4a7a}
+/* progress */
+.gate{background:var(--surface);border:1px solid var(--line);border-radius:18px;
+padding:34px;margin-top:44px;display:grid;gap:18px}
+.gate .row{display:flex;justify-content:space-between;align-items:baseline;
+flex-wrap:wrap;gap:8px}
+.gate .row b{font-size:18px;font-weight:700}
+.gate .row span{color:var(--mut);font-size:14px}
+.track{height:9px;background:var(--surface2);border:1px solid var(--line);
+border-radius:99px;overflow:hidden}
+.fill{height:100%;width:13.3%;border-radius:99px;
+background:linear-gradient(90deg,#10b981,var(--green))}
 
-/* seals */
-.hash{font-size:12.5px;color:var(--grn);word-break:break-all;
-background:#0a1a12;border:1px solid var(--grn-dim);border-radius:6px;padding:12px 14px}
-.hash .lbl{color:var(--mut);display:block;font-size:11px;margin-bottom:4px;letter-spacing:.1em}
-.verify{color:var(--dim);font-size:13.5px;margin-top:14px}
-.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:640px){.twocol{grid-template-columns:1fr}}
+/* proof card */
+.proof{background:var(--surface);border:1px solid var(--line);border-radius:18px;
+padding:34px;margin-top:44px}
+.proof .h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.proof .h svg{width:22px;height:22px;stroke:var(--green)}
+.proof .h b{font-size:17px;font-weight:700}
+.proof p{color:var(--body);font-size:15px;max-width:64ch}
+.hashline{font-family:var(--mono);font-size:13px;color:var(--green);
+background:#0c1410;border:1px solid rgba(52,211,153,.2);border-radius:10px;
+padding:13px 16px;margin-top:18px;overflow-x:auto;white-space:nowrap}
+.hashline span{color:var(--mut);font-family:"Inter",sans-serif;font-size:12px;margin-right:10px}
+.proof .links{margin-top:18px;display:flex;gap:22px;flex-wrap:wrap}
+.proof .links a{color:var(--green);font-size:14.5px;font-weight:500;text-decoration:none}
+.proof .links a:hover{text-decoration:underline}
 
-ul.open{list-style:none;color:var(--dim);font-size:14px}
-ul.open li{padding:7px 0;border-bottom:1px dashed var(--line)}
-ul.open li:last-child{border:none}
-ul.open b{color:var(--ink)}
-ul.open .y{color:var(--grn)}
-
-footer{color:var(--mut);font-size:12px;line-height:1.8;border-top:1px solid var(--line);padding-top:22px}
+/* footer */
+footer{border-top:1px solid var(--line);padding:36px 0 56px;margin-top:40px;
+color:var(--mut);font-size:13.5px;line-height:1.8}
 </style>
 </head>
 <body>
-
-<div class="ticker"><div class="tickwrap" id="tick"></div></div>
-
 <div class="wrap">
 
-<header>
-<div class="kicker">█ UNDER CONSTRUCTION — BUILDING IN PUBLIC, CRYPTOGRAPHICALLY</div>
-<h1>An autonomous trading agent that<br><span class="g">proves</span> — never claims — every result.</h1>
-<p class="sub">A committee of AI analysts trades under an <b>immutable risk
-constitution</b>, grades itself daily, and publishes a <b>cryptographic seal
-of every decision</b> to this repo each close. Strategies stay private.
-Honesty becomes verifiable. <b>The books open late August 2026.</b></p>
+<nav>
+<div class="logo">Ashish's <span>Trading Agent</span></div>
+<a class="navlink" href="https://github.com/Ashisharya144/trading-agent-proofs">View public proofs</a>
+</nav>
+
+<header class="hero">
+<div class="badge"><span class="pulse"></span>Live now — evaluation day 4 of 30</div>
+<h1>The AI that trades — and <em>proves</em> it isn't lying.</h1>
+<p class="lede">A committee of AI analysts trades the US market under
+<strong>unbreakable risk rules</strong>, grades its own judgment every day,
+and publishes <strong>cryptographic proof of every decision</strong> —
+so when the results are revealed, <strong>no one has to take our word for
+anything.</strong></p>
+<div class="stats">
+<div class="stat"><b class="g">375+</b><span>decisions per day, all logged</span></div>
+<div class="stat"><b class="g">0</b><span>risk-rule violations</span></div>
+<div class="stat"><b class="g">Daily</b><span>public cryptographic seal</span></div>
+<div class="stat"><b>Aug 2026</b><span>the books open — losses included</span></div>
+</div>
 </header>
 
-<section class="term" aria-label="Live replay of the agent's trading day">
-<div class="tbar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
-<span class="title">root@nuremberg:~/trading-agent — replay of an actual day (symbols redacted)</span></div>
-<div class="tbody" id="term"></div>
-</section>
-
 <section>
-<h2>// GATE A — SEALED 30-DAY EVALUATION</h2>
-<div class="panel">
-<p style="color:var(--dim);font-size:14px">Pass/fail criteria were
-<a href="GATE_A_CRITERIA.md">pre-registered and committed</a> <i>before</i>
-results existed — including the rule that currently hurts the score.
-No goalposts can move; git history is the witness.</p>
-<p class="progress">DAY 04 / 30&nbsp;&nbsp;<span class="bar">[████░░░░░░░░░░░░░░░░░░░░░░░░░░]</span>&nbsp;&nbsp;verdict: late Aug 2026</p>
+<div class="eyebrow">How it works</div>
+<h2>Three ideas. No trust required.</h2>
+<div class="cards">
+<div class="card">
+<div class="num">01</div>
+<div class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg></div>
+<h3>A committee, not a bot</h3>
+<p>Multiple AI analysts — price, news, economy — debate every trade.
+Analysts <strong>earn influence by being right</strong> and lose it by
+being wrong. New ones train with zero power until evidence promotes them.
+Above them all: <strong>risk rules no AI can override.</strong></p>
+</div>
+<div class="card">
+<div class="num">02</div>
+<div class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33"/></svg></div>
+<h3>Sealed in public, daily</h3>
+<p>Every evening, a <strong>cryptographic fingerprint</strong> of the
+day's full records is published to a public repository. It reveals no
+strategy — but it makes the history <strong>impossible to edit later.</strong>
+Predictions provably came before outcomes.</p>
+</div>
+<div class="card">
+<div class="num">03</div>
+<div class="ic"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg></div>
+<h3>The books open. Fully.</h3>
+<p>In late August the complete record is revealed — <strong>every trade,
+including the losses</strong> — judged against pass/fail criteria that were
+locked in <strong>before the results existed</strong>, and benchmarked
+against the market itself. Anyone can verify it matches the seals.</p>
+</div>
 </div>
 </section>
 
-<section>
-<h2>// THE COMMITTEE — INFLUENCE IS EARNED, NEVER GIVEN</h2>
-<div class="grid">
-<div class="agent"><div class="nm">technical</div><div class="role">price structure — acts only on statistically validated setups</div><span class="st st-v">VOTING</span></div>
-<div class="agent"><div class="nm">sentiment</div><div class="role">reads every headline — judges surprise vs expectation, not tone</div><span class="st st-v">VOTING</span></div>
-<div class="agent"><div class="nm">macro</div><div class="role">volatility &amp; regime — flagged by the auditor, under review</div><span class="st st-n">ON NOTICE</span></div>
-<div class="agent"><div class="nm">economy</div><div class="role">sector flows, breadth, Fed data — earning promotion in shadow</div><span class="st st-t">TRAINEE — 0% VOTE</span></div>
-<div class="agent"><div class="nm">risk-officer</div><div class="role">hard-coded constitution — cannot be overridden by any AI</div><span class="st st-s">ABSOLUTE</span></div>
-<div class="agent"><div class="nm">auditor</div><div class="role">adversarial AI — hunts the system's own flaws nightly</div><span class="st st-s">INDEPENDENT</span></div>
+<section style="padding-top:0">
+<div class="eyebrow">The evaluation</div>
+<h2>30 trading days. Rules fixed in advance.</h2>
+<p class="sect-sub">No cherry-picking, no moving goalposts. The success
+criteria were committed publicly before day one's results — including the
+choices that currently make our numbers <em>look worse</em>. That's the
+point.</p>
+<div class="gate">
+<div class="row"><b>Gate A — Day 4 of 30</b><span>verdict expected late August 2026</span></div>
+<div class="track"><div class="fill"></div></div>
+<div class="row"><span>Sealed daily since July 20</span><span>Strategies stay private · honesty goes public</span></div>
 </div>
-<p class="verify">Every analyst's calls are graded against reality daily.
-Wrong analysts lose influence automatically. Even rejected trades are
-tracked and scored — the system audits its own judgment, not just its wins.</p>
 </section>
 
-<section>
-<h2>// SEALED DAILY — THE PUBLIC NOTARY</h2>
-<div class="twocol">
-<div class="hash"><span class="lbl">FIRST DAILY SEAL — 2026-07-20 · decisions sha256</span>2749a68c352b38de2bb9c250bc2c27d5e8b0e15498292392af4b63226ebd0d90</div>
-<div class="hash"><span class="lbl">PRE-REGISTERED CRITERIA · commit</span>7686fbb487a1cdd44e1b7a7304d522c12194358e</div>
+<section style="padding-top:0">
+<div class="eyebrow">Verify, don't trust</div>
+<h2>The proof is already public.</h2>
+<div class="proof">
+<div class="h"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+<b>First public seal — July 20, 2026</b></div>
+<p>This fingerprint of the day's full decision record was published the
+same evening. When the records are revealed, anyone can recompute it and
+confirm nothing was ever altered. Every trading day adds another.</p>
+<div class="hashline"><span>SHA-256</span>2749a68c352b38de2bb9c250bc2c27d5e8b0e15498292392af4b63226ebd0d90</div>
+<div class="links">
+<a href="proofs.jsonl">All daily seals →</a>
+<a href="GATE_A_CRITERIA.md">The pre-registered criteria →</a>
+<a href="https://github.com/Ashisharya144/trading-agent-proofs">Proof repository →</a>
 </div>
-<p class="verify">Each trading day appends one line to
-<a href="proofs.jsonl">proofs.jsonl</a>: SHA-256 fingerprints of the full
-private records — every decision, trade, and news snapshot, plus the exact
-code version. Nothing is revealed today; everything becomes
-<b style="color:var(--ink)">mathematically verifiable</b> at disclosure.
-Predictions provably precede outcomes. <span class="c-grn">Claims are free.
-Proofs are not.</span></p>
-</section>
-
-<section>
-<h2>// WHAT OPENS IN LATE AUGUST</h2>
-<div class="panel"><ul class="open">
-<li><span class="y">▸</span> The full journal — <b>every trade including the losers</b>, hash-matched to the seals above</li>
-<li><span class="y">▸</span> The verdict against <b>pre-registered criteria</b> — pass, fail, or honestly inconclusive</li>
-<li><span class="y">▸</span> Benchmarks vs <b>buy-and-hold SPY and 1,000 random-entry simulations</b> — not vs zero</li>
-<li><span class="y">▸</span> The committee's report cards, the abstention ledger, and the cost-sensitivity table</li>
-<li><span class="y">▸</span> What stays private: <b>the strategies</b>. What gets proven: <b>the honesty.</b></li>
-</ul></div>
+</div>
 </section>
 
 <footer>
-A private research project by Ashish Arya. Paper trading only. No
-investment advice. No performance claims — that is the point. Strategies
-and code remain private; integrity is public.
-&nbsp;·&nbsp;<a href="https://github.com/Ashisharya144/trading-agent-proofs">proof repo</a>
+A private research project by <strong style="color:var(--body)">Ashish Arya</strong>.
+Paper trading only — no real money, no investment advice, and no performance
+claims: that's the point. Claims are free; proofs are not. Strategies and
+code remain private. Integrity is public.
 </footer>
 
 </div>
-
-<script>
-/* ticker */
-const items = `<span>█ STATUS: <b>GATE A — DAY 04/30</b></span><span>SEALED DAILY SINCE <b>2026-07-20</b></span><span>PROOF <b>2749a68c…0d90</b></span><span>RISK VIOLATIONS: <b>0</b></span><span>BOOKS OPEN: <b>LATE AUG 2026</b></span><span>LOSSES WILL BE PUBLISHED: <b>YES</b></span>`;
-document.getElementById('tick').innerHTML = items + items;
-
-/* terminal replay */
-const L=(t,c)=>({t,c});
-const lines=[
-L("$ systemd: trading-day.service — started","c-mut"),
-L("[09:20:01] boot · code 7208d66 · risk constitution LOCKED","c-dim"),
-L("[09:30:00] senses online: bars ✓ news ✓ vix ✓ fed ✓ sectors ✓ breadth ✓","c-grn"),
-L("[09:35:02] committee convened on ██████","c-dim"),
-L("  technical   ▸ flat   conf 0.00 — no validated setup","c-mut"),
-L("  sentiment   ▸ long   conf 0.55 — credible surprise in guidance","c-dim"),
-L("  macro       ▸ long   conf 0.30 — volatility calm","c-dim"),
-L("  economy †   ▸ short  conf 0.35 — breadth divergence   † trainee: 0% vote","c-amb"),
-L("[09:35:05] gate: confluence met · risk-officer: APPROVED · bracket fixed","c-grn"),
-L("[09:35:06] PAPER ORDER placed · journaled · will be graded","c-grn"),
-L("[10:05:12] committee convened on ██████ → votes weak → STAND DOWN","c-dim"),
-L("           └─ rejection tracked as counterfactual (judgment gets graded too)","c-mut"),
-L("[11:40:33] committee convened on ██████ → STAND DOWN (evidence thin)","c-dim"),
-L("[14:12:09] position resolved · outcome graded · analysts credited/blamed","c-dim"),
-L("[16:00:00] close · 380 decisions logged · every reason archived","c-dim"),
-L("[16:01:44] self-review written — the agent critiques its own day","c-blu"),
-L("[16:02:19] audit: 21 checks · security ✓ backups ✓ integrity ✓","c-blu"),
-L("[16:02:31] PROOF SEALED sha256:2749a68c… → published to public notary ✓","c-grn"),
-L("[16:02:32] sleep until 09:20 tomorrow. no human required.","c-mut"),
-];
-const term=document.getElementById('term');
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-function build(){
-  term.innerHTML='';
-  const els=lines.map(l=>{const d=document.createElement('div');
-    d.className='tl '+l.c;d.textContent=l.t;term.appendChild(d);return d;});
-  const cur=document.createElement('span');cur.className='cursor';term.appendChild(cur);
-  return els;
-}
-function play(){
-  const els=build();
-  if(reduced){els.forEach(e=>e.classList.add('show'));return;}
-  let i=0;
-  (function next(){
-    if(i<els.length){els[i].classList.add('show');
-      const d=els[i].textContent.startsWith('[')?520:340;i++;setTimeout(next,d);}
-    else setTimeout(()=>{play();},9000);
-  })();
-}
-play();
-</script>
 </body>
 </html>
