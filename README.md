@@ -21,3 +21,8 @@ publication.
 
 *No investment advice. No performance claims. This is an integrity
 mechanism, not a marketing page.*
+
+
+## Disclaimer
+
+This is a personal research project. The system trades a simulated (paper) account. Nothing in this repository is investment advice, a recommendation, an offer or solicitation regarding any security, or a promise of performance. Published hashes exist to make records tamper-evident, not to promote any strategy. Trading involves substantial risk of loss. Consult a licensed financial professional before making investment decisions.
