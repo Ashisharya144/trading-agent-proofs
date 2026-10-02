@@ -262,3 +262,15 @@
 # about whether the research was good, the data correct, or the model
 # intelligent. Economic truth still comes from the research.
 {"date":"2026-10-01","published_utc":"2026-10-01T20:03:56Z","decisions_day_sha256":"912b8c9dc85461ff1d521e8dace3ef60c3cc0d305fde28d532a876e25c049b05","journal_day_sha256":"8d11dead7114de7ec6640be34b32495ec77c688148ea50c884251137434db4f8","journal_full_sha256":"93ce53e2de0f49b12e25976a3302414804ae04c3df1ff75448d4cb7a8f83752e","meta_state_sha256":"a1ba97a1bb45b3f9884ab49387525de39c8995ff0adf1616286523182e27bf26","news_day_sha256":"f80239e850a21d2587ee016fc33acb1c5c28da544a19c8908d0f61d9abf265e5","learning_constitution_sha256":"dbe7ed6cb75506f40c55d86a864809869a349de3baa992897988ddf393ef7d78","gate_a_criteria_sha256":"33d72fd58c77f199e31cc2b4c5dd08d4511896db485902eecf36152c37a1e8c9","baselines_frozen_sha256":"4ecf8e98e94ac1b8f678263c89768327a0ec4f913ed120024416a0976d1e0d3b","registry_head":"117:d7f42edca12db09c92df4ed5951f6b7812fe5e40b5eba031cd899af09eff1141","experiment_ledger_head":"676:909346e0a74ed9a4ea18f8a0dd3ccff2330152017af6e6706c45173e5dc625c8","policy_manifest_sha256":"1118e213f226ea00d61551d7a335cd5350c43370abdf43ae3f81888fb63e65b4","code_commit":"d9017281e63ba47776f4364ffe9465bee00dd0c2"}
+# AF-4.5 §21: bind the append-only subsystem heads into the daily external
+# anchor. A local hash chain detects edits, reordering and mid-log deletion,
+# but NOT truncation -- a prefix of a valid chain is itself a valid chain, so
+# removing events from the END is invisible to the chain alone. Committing the
+# head (count + hash) to an externally anchored daily line makes truncation
+# after an anchored date externally detectable.
+#
+# PRECISE CLAIM, so this does not become security theatre: the anchor proves
+# WHEN a record existed and that it has not changed since. It proves nothing
+# about whether the research was good, the data correct, or the model
+# intelligent. Economic truth still comes from the research.
+{"date":"2026-10-02","published_utc":"2026-10-02T20:03:28Z","decisions_day_sha256":"66db51eff22af97f599c6cebbcfc876d754b199ab962631cfe350659e0df399a","journal_day_sha256":"60c9f7bfa01af010ef2642c526215db91586702e25b982d338352d8f291dc261","journal_full_sha256":"912f1374cb3e4823b6fe714a0e1e158b7fe155221d644890291e87890f44d366","meta_state_sha256":"a1ba97a1bb45b3f9884ab49387525de39c8995ff0adf1616286523182e27bf26","news_day_sha256":"8df5977d23441f5ca4bdfdd5938758447744c6f26c1b974f8e6af67687a9015c","learning_constitution_sha256":"dbe7ed6cb75506f40c55d86a864809869a349de3baa992897988ddf393ef7d78","gate_a_criteria_sha256":"33d72fd58c77f199e31cc2b4c5dd08d4511896db485902eecf36152c37a1e8c9","baselines_frozen_sha256":"4ecf8e98e94ac1b8f678263c89768327a0ec4f913ed120024416a0976d1e0d3b","registry_head":"117:d7f42edca12db09c92df4ed5951f6b7812fe5e40b5eba031cd899af09eff1141","experiment_ledger_head":"676:909346e0a74ed9a4ea18f8a0dd3ccff2330152017af6e6706c45173e5dc625c8","policy_manifest_sha256":"1118e213f226ea00d61551d7a335cd5350c43370abdf43ae3f81888fb63e65b4","code_commit":"0a20668908e9ebb730e2ec9d9ffa2c1618662215"}
